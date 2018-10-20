@@ -3,8 +3,7 @@ const vis_header = d3.select("#vis-header");
 
 const
     margin = { top: 20, right: 50, bottom: 40, left: 70 },
-    chart_width = vis_container.node().getBoundingClientRect().width,
-    tooltip_size = { height: 80, width: 150 };
+    chart_width = vis_container.node().getBoundingClientRect().width;
 var
     chart_height = vis_container.node().getBoundingClientRect().height - vis_header.node().getBoundingClientRect().height,
     svg = vis_container.append('svg').attr("width", chart_width).attr("height", chart_height);
@@ -27,5 +26,6 @@ d3.csv(
         }
     }
 ).then(() => {
-    drawCalendarChart()
+    drawCalendarChart();
+    createTooltip(svg);
 });

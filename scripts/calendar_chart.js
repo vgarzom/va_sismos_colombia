@@ -1,14 +1,15 @@
 const
-    color = d3.scaleSequential(d3.interpolatePiYG).domain([8, 0]),
+    color = d3.scaleSequential(d3.interpolateRdYlGn).domain([8, 0]),
     formatMonth = d3.timeFormat("%b"),
     formatDay = d => "SMTWTFS"[d.getDay()],
     formatDate = d3.timeFormat("%x"),
     format = d3.format("+.2%"),
-    cellSize = (chart_width - margin.right - margin.left)/52,
+    cellSize = (chart_width - margin.right - margin.left) / 52,
     height = cellSize * 9;
 
 const countDay = d => d.getDay();
 const timeWeek = d3.timeSunday;
+var years;
 
 function pathMonth(t) {
     const n = 7;
@@ -23,7 +24,7 @@ function drawCalendarChart() {
     console.log("from calendar --> " + sismos.length)
     console.log(sismos);
 
-    const years = d3.nest()
+    years = d3.nest()
         .key(d => d.date.getFullYear())
         .entries(sismos)
         .reverse();
@@ -59,14 +60,14 @@ function drawCalendarChart() {
         .selectAll("rect")
         .data(d => d.values)
         .enter().append("rect")
-        .attr("width", cellSize )
+        .attr("width", cellSize)
         .attr("height", cellSize - 1)
-        
+
         .attr("x", d => timeWeek.count(d3.timeYear(d.date), d.date) * cellSize + 0.5)
         .attr("y", d => countDay(d.date) * cellSize + 0.5)
         .attr("fill", d => color(d.magnitude))
-        .append("title")
-        .text(d => `${formatDate(d.date)}: ${format(d.value)}`);
+        .on("mouseover", mouseover)
+        .on("mouseleave", resetTooltip);
 
     const month = year.append("g")
         .selectAll("g")
@@ -75,8 +76,8 @@ function drawCalendarChart() {
 
     month.filter((d, i) => i).append("path")
         .attr("fill", "none")
-        .attr("stroke", "#fff")
-        .attr("stroke-width", 3)
+        .attr("stroke", "steelblue")
+        .attr("stroke-width", 1)
         .attr("d", pathMonth);
 
     month.append("text")
@@ -86,3 +87,6 @@ function drawCalendarChart() {
 
 }
 
+function mouseover(d) {
+    updateTooltip(d);
+}
