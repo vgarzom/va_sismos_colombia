@@ -62,7 +62,7 @@ function drawCalendarChart() {
         .enter().append("rect")
         .attr("width", cellSize)
         .attr("height", cellSize - 1)
-
+        .attr("id", d => `sismo_${d.id}`)
         .attr("x", d => timeWeek.count(d3.timeYear(d.date), d.date) * cellSize + 0.5)
         .attr("y", d => countDay(d.date) * cellSize + 0.5)
         .attr("fill", d => color(d.magnitude))

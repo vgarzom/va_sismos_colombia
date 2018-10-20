@@ -20,6 +20,7 @@ d3.csv(
     (d, i) => {
         
         d.magnitude = +d.magnitude;
+        d.id = i;
         if (d.magnitude >= 3){
             d.date = date_parse(d.date);
             sismos.push(d);

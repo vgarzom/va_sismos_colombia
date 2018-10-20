@@ -55,6 +55,12 @@ function createTooltip(mysvg) {
 }
 
 function updateTooltip(d) {
+    var sismo = d3.select(`#sismo_${d.id}`);
+    sismo
+        .attr("stroke", "steelblue")
+        .attr("stroke-width", 1.2);
+
+    
     const year = yearFormat(d.date);
     var i = 0;
     for (i = 0; i < years.length; i++) {
@@ -63,19 +69,23 @@ function updateTooltip(d) {
         }
     }
 
-    var x = (timeWeek.count(d3.timeYear(d.date), d.date) * cellSize) -4*cellSize + tooltip_size.width / 2;
-    if (x + tooltip_size.width > chart_width){
-        x = (timeWeek.count(d3.timeYear(d.date), d.date) * cellSize) -7*cellSize - tooltip_size.width / 2;
+
+    var x = sismo.node().getBoundingClientRect().x;
+    if (x + tooltip_size.width > chart_width) {
+        x = sismo.node().getBoundingClientRect().x - tooltip_size.width - 100;
     }
     var y = (height * i + cellSize * 1.5) + countDay(d.date) * cellSize - cellSize;
     tooltip.attr("transform", `translate(${x},${y})`);
-    console.log(d);
     tooltip.select("#tooltip-title").text(d.municipio);
     tooltip.select("#tooltip-subtitle").text(d.departamento);
     tooltip.select("#tooltip-magnitude").text(`magnitud: ${d.magnitude}`);
     tooltip.select("#tooltip-depth").text(`profundidad: ${d.depth}`);
 }
 
-function resetTooltip() {
+function resetTooltip(d) {
+    var sismo = d3.select(`#sismo_${d.id}`);
+    sismo
+        .attr("stroke", "steelblue")
+        .attr("stroke-width", 0);
     tooltip.attr("transform", `translate(-1000,-1000)`);
 }
