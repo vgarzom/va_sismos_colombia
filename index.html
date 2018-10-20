@@ -29,18 +29,34 @@
 
                     <div class="clr-col-lg-8 clr-col-md-12 central-container">
                         <div class="clr-row">
-                            <div class="clr-col-12" >
+                            <div class="clr-col-12">
                                 <div class="card">
                                     <div class="card-header" id="vis-header">
                                         Magnitudes sísmicas
+
                                     </div>
                                     <div class="card-block">
+
+                                        <span>Mag.min</span>
+                                        <input type="number" id="min-magnitude-input" placeholder="Magnitud mínima"
+                                            class="clr-input" style="width: 60px">
+                                        <span>Mag.máx</span>
+                                        <input type="number" id="max-magnitude-input" placeholder="Magnitud máxima"
+                                            class="clr-input" style="width: 60px">
+
+                                        <span>Prof.min</span>
+                                        <input type="number" id="min-depth-input" placeholder="Magnitud mínima" class="clr-input"
+                                            style="width: 60px">
+                                        <span>Prof.máx</span>
+                                        <input type="number" id="max-depth-input" placeholder="Magnitud máxima" class="clr-input"
+                                            style="width: 60px">
+                                        <button class="btn btn-primary btn-sm" onclick="controlsChanged()">Actualizar</button>
                                         <div id="vis-container">
 
                                         </div>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                         </div>
                         <div class="clr-row insights_container">
                             <div class="clr-col">
@@ -52,36 +68,18 @@
                                 </ul>
                                 <section id="panel1" role="tabpanel" aria-labelledby="tab1">
                                     <ul class="list">
-                                        <li><b>Definitivamente el calentamiento global es una realidad.</b> Podemos
-                                            notar que
-                                            las anomalías en la temperatura de la superficie terrestre han aumentado en
-                                            las últimas décadas. Aproximadamente desde el año 1975 se ha visto un
-                                            incremento mayor. De hecho en los últimos años el incremento en la
-                                            temperatura ha sido de más 1ºC, lo que representa un incremento muy grande
-                                            si se compara con años atrás donde los increntos se medían en milésimas de
-                                            ºC</li>
-                                        <li><b>Existe una diferencia en los cambios de temperatura entre los
-                                                hemisferios
-                                                norte y sur.</b> Aunque logra percibirse que el hemisferio norte
-                                            registra
-                                            aumentos mayores de temperatura comparado con el hemisferio sur, es
-                                            importante destacar que este comportamiento se ha visto empeorado
-                                            aproximadamente a partir del año 2000.</li>
+                                        <li><b>La actividad sísmica registrada en el país es supremamente amplia.</b>
+                                            Vemos que en el país se se estan registrando sismos todos los días, la
+                                            mayoría de las veces estos son de muy baja magnitud o se presentan
+                                            profúndamente, lo que impide que puedan sentirse. Sin embargo, anualmente
+                                            se presentan varios eventos que si se pueden llegar a percibir.</li>
+                                        <li><b>Entre el año 93 y el 96 se registraró la mayor actividad sísmica del
+                                                país.</b> En estos años se presentaron varios sismos de magnitud
+                                            superior a 5 en la escala de Richter, temblores de esta magnitud pueden
+                                            generar daños en la propiedad. A partir del 96 la actividad disminuyó hasta
+                                            el 2006 y 2007 donde se presentaron varios eventos.</li>
                                         <li>
-                                            <b>El cambio global afecta a todas las estaciones del año:</b> Es común
-                                            escuchar que el calentamiento global no es real basándose en que
-                                            actualmente algunos meses se sienten con temperaturas más bajas que años
-                                            atrás. Sin embargo, los datos confirman que para todas las estaciones del
-                                            año ha existido un cambio sustancial en la temperatura. Esto podemos
-                                            observarlo en la visualización de la parte inferior, donde notamos un
-                                            colorido mayor en las últimas décadas (Aproximadamente a partir de 1975).
-                                        </li>
-
-                                        <li>
-                                            <b>Nuevamente el hemisferio norte produce más calor en todas las épocas del
-                                                año:</b> Si comparamos las tendencias en las anomalías de temperatura
-                                            en tre hemisferios, notamos fácilmente que el hemisferio norte está
-                                            aumentando mucho más su temperatura en todas las épocas del año.
+                                            <b>Ya han pasado 2 años desde el último sismo fuerte:</b> El último sismo fuerte fue en 2016, registrado en Tumaco con magnitud de 6.3 y a una distancia de tan solo 20Km. Después de él no se han presentado más eventos.
                                         </li>
                                     </ul>
                                 </section>
@@ -90,17 +88,15 @@
                         </div>
                     </div>
                     <div class="clr-col-lg-4 clr-col-md-12 data-abstraction-container">
-                        <h3>El calentamiento global es una realidad</h3>
-                        <h4>Datos de la NASA lo confirman:</h4>
-                        <p>La NASA publicó un <a href="https://data.giss.nasa.gov/gistemp/">conjunto de datos</a> donde
-                            se
-                            presentan los cambios en
-                            temperatura desde 1880 hasta la fecha. Dicha información se encuentra diferenciada por
-                            hemisferios,
-                            meses, estaciones y promedio anual.</p>
-                        <p>Esta visualización, basada en dichos datos, muestra que el calentamiento global es un
-                            problema real,
-                            afecta a todos los ecosistemas y es necesario tomar acciones para detenerlo.</p>
+                        <h3>Record: 2 años sin temblores fuertes</h3>
+                        <p>Utilizando el <a href="https://data.giss.nasa.gov/gistemp/">catálogo sismicida</a>
+                            publicado por el Servicio Geológico Colombiano a partir de 1993 se obtuvieron
+                            datos de los sismos registrados en Colombia, dado a que el catálogo presenta los datos
+                            distribuidos por departamentos, fue necesario descargar manualmente cada dataset para crear
+                            uno único con toda la información.</p>
+                        <p>Esta visualización, basada en dichos datos, muestra que la actividad sismológica en Colombia
+                            es alta y que aunque no se han presentado muchos eventos con alta magnitud en los últimos
+                            años es prudente estar preparados.</p>
                         <div class="separator"></div>
 
                         <h3>Abstracción de datos: Framework de Tamara</h3>
@@ -113,12 +109,15 @@
                                 <h4 class="card-title">WHAT</h4>
                                 <p class="card-text">
                                     Los datos se encuentran distribuidos en items y atributos, sin embargo estos
-                                    atributos están organizados a partir de variables temporales. Indicándonos que se
-                                    trata de un <b>Dataset Temporal</b>. En dicho dataset tenemos básicamente 2
-                                    variables, el tiempo y
-                                    la temperatura. Dicha temperatura se encuentra medida para las
-                                    diferentes estaciones y en un promedio general para todo el año. El dataset tiene
-                                    una disponibilidad Dinámica, actualizándose cada mes. La siguiente tabla
+                                    atributos están organizados a partir de variables temporales. Indicándonos que
+                                    se
+                                    trata de un <b>Dataset Temporal</b>. En dicho dataset tenemos una variable de
+                                    tiempo (fecha del evento) y las variables de localización, magnitud y profundidad.
+                                    El dataset
+                                    tiene
+                                    una disponibilidad Dinámica, actualizándose cada mes. Sin embargo, como se ha
+                                    mencionado fue necesario descargar por partes el dataset lo que impide que la
+                                    visualización se actualice a la vez que lo hace el catálogo. La siguiente tabla
                                     resume los atributos que se utilizarán en la visualización:
                                 </p>
                                 <table class="table">
@@ -132,43 +131,31 @@
                                     <tbody>
                                         <tr>
                                             <td>tiempo</td>
-                                            <td class="left">distribuido por años</td>
+                                            <td class="left">Fecha de cada evento sísmico</td>
                                             <td class="left">Ord | Quan | Seq.</td>
                                         </tr>
                                         <tr>
-                                            <td>DJF</td>
-                                            <td class="left">Anomalía de temperatura en ºC entre Dec y Feb</td>
-                                            <td class="left">Ord | Quan | Div.</td>
+                                            <td>magnitude</td>
+                                            <td class="left">Magnitud del sismo en la escala de Richter</td>
+                                            <td class="left">Ord | Quan | Seq.</td>
                                         </tr>
                                         <tr>
-                                            <td>MAM</td>
-                                            <td class="left">Anomalía de temperatura en ºC entre Mar y May</td>
-                                            <td class="left">Ord | Quan | Div.</td>
+                                            <td>depth</td>
+                                            <td class="left">Profundidad en Km del sismo</td>
+                                            <td class="left">Ord | Quan | Seq.</td>
                                         </tr>
                                         <tr>
-                                            <td>JJA</td>
-                                            <td class="left">Anomalía de temperatura en ºC entre Jun y Aug</td>
-                                            <td class="left">Ord | Quan | Div.</td>
+                                            <td>Departamento</td>
+                                            <td class="left">Departamento en el cual se presenta el sismo</td>
+                                            <td class="left">Categórico</td>
                                         </tr>
                                         <tr>
-                                            <td>SON</td>
-                                            <td class="left">Anomalía de temperatura en ºC entre Sep y Nov</td>
-                                            <td class="left">Ord | Quan | Div.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>J-D</td>
-                                            <td class="left">Promedio anual de las Anomalías de temperatura en ºC</td>
-                                            <td class="left">Ord | Quan | Div.</td>
+                                            <td>Municipio</td>
+                                            <td class="left">Municipio en el cual se presenta el sismo</td>
+                                            <td class="left">Categórico</td>
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>
-                            <div class="card-footer">
-                                <p><b>Es importante
-                                        destacar que los datos de cada hemisferio provienen de distintos datasets con
-                                        las mismas
-                                        características.</b> De aquí se deriva un atributo "hemisferio" categórico,
-                                    obtenido al combinar los distintos datasets.</p>
                             </div>
                         </div>
 
@@ -192,27 +179,18 @@
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td class="left">Descubrir tendencias en los cambios de temperatura anuales</td>
-                                            <td class="left">Discover Trends</td>
+                                            <td class="left">Resumir los eventos sísmicos ocurridos</td>
+                                            <td class="left">Summarize features</td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
-                                            <td class="left">Comparar tendendencias en los cambios de temperatura entre
-                                                hemisferios</td>
+                                            <td class="left">Comparar años en los que hubo mayor actividad sísmica</td>
                                             <td class="left">Compare Trends</td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
-                                            <td class="left">Identificar años y estaciones en los que hubo un mayor
-                                                aumento o
-                                                de la temperatura</td>
-                                            <td class="left">Locate Outliers</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>4</td>
-                                            <td class="left">Comparar tendencias entre hemisferios y estaciones</td>
-                                            <td class="left">Compare trends</td>
+                                            <td class="left">Identificar posibles patrones en la ocurrencia de sismos</td>
+                                            <td class="left">Discover features</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -229,7 +207,7 @@
                                 <p class="card-text">
                                     Los siguientes son los distintos modismos seleccionados para la visualización:
                                 </p>
-                                <h6>Visualización 1: Line chart</h6>
+                                <h6>Visualización 1: Calendar chart</h6>
                                 <table class="table">
                                     <thead>
                                         <tr>
@@ -242,77 +220,19 @@
                                             <td>Channels</td>
                                             <td class="left">
                                                 <ul class="list">
-                                                    <li><b>Spatial:</b>
+                                                    <li><b>Spatial: Coordenadas cartesianas</b>
                                                         <ul class="list">
-                                                            <li><b>x:</b> Tiempo, distribuido en años <br /> <b>Encode:
-                                                                </b>Express</li>
-                                                            <li><b>y:</b> Temperatura, anomalías en ºC <br /> <b>Encode:
-                                                                </b>Express</li>
+                                                            <li><b>horizontal:</b> Semanas <br /> <b>Encode:
+                                                                </b>Separate, order, align</li>
+                                                            <li><b>vertical:</b> Días <br /> <b>Encode:
+                                                                </b>Separate, order, align</li>
+                                                            <li><b>vertical externo:</b> años <br /> <b>Encode:
+                                                                </b>Separate, order, align</li>
                                                         </ul>
                                                     </li>
-                                                    <li><b>Color hue:</b> Categoriza los hemisferios <br /> <b> Encode:
-                                                        </b>separate</li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Marks</td>
-                                            <td class="left">
-                                                <ul class="list">
-                                                    <li><b>Line:</b> Marca para el comportamiento de las anomalías de
-                                                        temperatura respecto al tiempo.</li>
-                                                    <li><b>Point:</b> Marca superimpuesta a la línea para acentuar las
-                                                        anomalías.</li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Manipulate</td>
-                                            <td class="left">
-                                                <ul class="list">
-                                                    <li><b>Change:</b> Permite seleccionar los hemisferios que serán
-                                                        presentados.</li>
-                                                    <li><b>Select:</b> Permite ubicarse sobre un año dado para
-                                                        facilitar la lectura de datos.</li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Facet</td>
-                                            <td class="left">
-                                                <ul class="list">
-                                                    <li><b>super impose:</b> Se sobreponen los hemisferios para
-                                                        facilitar su comparación y se sobreponen las marcas de
-                                                        puntos y líneas.</li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                                <h6>Visualización 2: Horizon chart</h6>
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th>Descripción</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Channels</td>
-                                            <td class="left">
-                                                <ul class="list">
-                                                    <li><b>Spatial:</b>
-                                                        <ul class="list">
-                                                            <li><b>x:</b> Tiempo, distribuido en años <br /> <b>Encode:
-                                                                </b>Express</li>
-                                                            <li><b>y:</b> Temperatura, anomalías en ºC <br /> <b>Encode:
-                                                                </b>Express</li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><b>Color saturation:</b> anomalías <br /> <b> Encode:
+                                                    <li><b>Color saturation:</b> Categoriza las magnitudes de los
+                                                        sismos <br /> <b>
+                                                            Encode:
                                                         </b>express</li>
                                                 </ul>
                                             </td>
@@ -321,17 +241,35 @@
                                             <td>Marks</td>
                                             <td class="left">
                                                 <ul class="list">
-                                                    <li><b>Area:</b> Marca para el comportamiento de las anomalías de
-                                                        temperatura respecto al tiempo.</li>
+                                                    <li><b>Points:</b> Aunque son pequeñas áreas cuadradas, su tamaño
+                                                        no se ve afectado. Representan cada sismo en el calendar chart.</li>
                                                 </ul>
                                             </td>
                                         </tr>
 
-
-
+                                        <tr>
+                                            <td>Manipulate</td>
+                                            <td class="left">
+                                                <ul class="list">
+                                                    <li><b>Change:</b> Permite cambiar parámetros como la magnitud
+                                                        mínima y máxima, y la profundidad del sismo.</li>
+                                                    <li><b>Select:</b> Permite ubicarse sobre un evento dado para
+                                                        visualizar numéricamente la información (tooltip).</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Facet</td>
+                                            <td class="left">
+                                                <ul class="list">
+                                                    <li><b>Juxtapose:</b> Se presentan todos los años juxtapuestos.</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
 
                                     </tbody>
                                 </table>
+
                             </div>
                         </div>
                         <h4>Tecnologías utilizadas</h4>
@@ -341,24 +279,24 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="https://vmware.github.io/clarity/documentation/v0.13">VMWare - Clarity Design
+                                <a href="https://vmware.github.io/clarity/documentation/v0.13">VMWare - Clarity
+                                    Design
                                     V0.13
                                 </a>
                             </li>
                         </ul>
-                        <span class="label label-blue">Github</span>
-                        <span class="label label-blue">Github Pages</span>
+                        <a href="https://github.com/vgarzom/va_sismos_colombia" class="label label-blue clickable">
+                            Github
+                        </a>
+                        <a href="https://vgarzom.github.io/va_sismos_colombia/" class="label label-blue clickable">
+                            Github Pages
+                        </a>
                         <div class="separator"></div>
                         <h4>Referencias</h4>
                         <ul class="list">
                             <li>
-                                <a href="https://beta.observablehq.com/@mbostock/d3-line-chart">Mike Bostock -
-                                    LineChart
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://beta.observablehq.com/@mbostock/d3-horizon-chart">Mike Bostock -
-                                    Horizon Chart
+                                <a href="https://beta.observablehq.com/@mbostock/d3-calendar-view">Mike Bostock -
+                                    CalendarView
                                 </a>
                             </li>
                         </ul>

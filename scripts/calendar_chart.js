@@ -29,10 +29,15 @@ function drawCalendarChart() {
         .entries(sismos)
         .reverse();
 
+    years.sort(function (x, y) {
+        return d3.descending(x.key, y.key);
+    })
+
     console.log(years);
 
     chart_height = years.length * height;
     svg.attr("height", chart_height);
+    svg.selectAll("g").remove();
 
     const year = svg.selectAll("g")
         .data(years)
