@@ -74,7 +74,7 @@ function updateTooltip(d) {
     if (x + tooltip_size.width > chart_width) {
         x = sismo.node().getBoundingClientRect().x - tooltip_size.width - 100;
     }
-    var y = (height * i + cellSize * 1.5) + countDay(d.date) * cellSize - cellSize;
+    var y = (height * i + cellSize * 1.5) + countDay(d.date) * cellSize - tooltip_size.height / 2;
     tooltip.attr("transform", `translate(${x},${y})`);
     tooltip.select("#tooltip-title").text(d.municipio);
     tooltip.select("#tooltip-subtitle").text(d.departamento);
