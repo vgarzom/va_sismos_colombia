@@ -45,6 +45,9 @@ function updateData() {
             }
         }
     ).then(() => {
+        sismos.sort((x, y) => {
+            return d3.ascending(x.date, y.date);
+        })
         drawCalendarChart();
         createTooltip(svg);
     });

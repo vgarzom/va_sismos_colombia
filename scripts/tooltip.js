@@ -54,12 +54,7 @@ function createTooltip(mysvg) {
         .attr("y", 70);
 }
 
-function updateTooltip(d) {
-    var sismo = d3.select(`#sismo_${d.id}`);
-    sismo
-        .attr("stroke", "steelblue")
-        .attr("stroke-width", 1.2);
-
+function updateTooltip(d, sismo) {
     
     const year = yearFormat(d.date);
     var i = 0;

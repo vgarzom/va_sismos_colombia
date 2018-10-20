@@ -1,7 +1,7 @@
 const
     color = d3.scaleSequential(d3.interpolateRdYlGn).domain([8, 0]),
     formatMonth = d3.timeFormat("%b"),
-    formatDay = d => "SMTWTFS"[d.getDay()],
+    formatDay = d => "DLMMJVS"[d.getDay()],
     formatDate = d3.timeFormat("%x"),
     format = d3.format("+.2%"),
     cellSize = (chart_width - margin.right - margin.left) / 52,
@@ -21,8 +21,6 @@ function pathMonth(t) {
 }
 
 function drawCalendarChart() {
-    console.log("from calendar --> " + sismos.length)
-    console.log(sismos);
 
     years = d3.nest()
         .key(d => d.date.getFullYear())
@@ -93,5 +91,11 @@ function drawCalendarChart() {
 }
 
 function mouseover(d) {
-    updateTooltip(d);
+
+    var sismo = d3.select(`#sismo_${d.id}`);
+    sismo
+        .attr("stroke", "black")
+        .attr("stroke-width", 1.2);
+
+    updateTooltip(d, sismo);
 }
